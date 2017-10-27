@@ -4,6 +4,9 @@ import com.brainacademy.service.dao.GenericDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -80,6 +83,17 @@ public abstract class AbstractDao<T>
             return ((Long) session.createQuery(
                     "select count(*) from " + getEntityType().getSimpleName())
                     .uniqueResult()).intValue();
+        }
+    }
+
+    @Override
+    public Page<T> getAll(Pageable pageable) {
+        try (Session session = sessionFactory.openSession()) {
+            TypedQuery<T> query = session.createQuery(
+                    "from " + getEntityType().getSimpleName(), getEntityType())
+                    .setFirstResult(pageable.getOffset())
+                    .setMaxResults(10);
+            return new PageImpl<>(query.getResultList(), pageable, count());
         }
     }
 

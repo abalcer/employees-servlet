@@ -1,0 +1,23 @@
+group 'com.brainacademy'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework:spring-webmvc"
+    compile group: 'org.springframework.data', name: 'spring-data-commons', version: '2.0.0.RELEASE'
+
+
+    compile 'javax.servlet:jstl:1.2'
+    providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
+
+    compile 'org.hibernate:hibernate-core:5.2.10.Final'
+    compile project(':data-service')
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

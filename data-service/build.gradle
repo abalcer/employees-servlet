@@ -2,18 +2,21 @@ group 'com.brainacademy'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'idea'
 
 sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-    maven { url 'https://jitpack.io' }
-}
 
 dependencies {
     compile 'org.hibernate:hibernate-core:5.2.10.Final'
     compile 'org.xerial:sqlite-jdbc:3.20.1'
-    compile 'com.github.gwenn:sqlite-dialect:-SNAPSHOT'
+    compile 'com.github.gwenn:sqlite-dialect:d285e22851'
+
+    compile "org.springframework:spring-jdbc:${springVersion}"
+    compile "org.springframework:spring-orm:${springVersion}"
+    compile "org.springframework:spring-context:${springVersion}"
+    compile 'org.springframework.data:spring-data-commons-core:1.4.1.RELEASE'
+
+    compile("org.springframework.boot:spring-boot-autoconfigure:1.5.8.RELEASE")
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
