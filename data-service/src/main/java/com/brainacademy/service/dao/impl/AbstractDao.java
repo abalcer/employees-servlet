@@ -93,7 +93,9 @@ public abstract class AbstractDao<T>
                     "from " + getEntityType().getSimpleName(), getEntityType())
                     .setFirstResult(pageable.getOffset())
                     .setMaxResults(10);
-            return new PageImpl<>(query.getResultList(), pageable, count());
+            List<T> entities = query.getResultList();
+            int count = count();
+            return new PageImpl<>(entities, pageable, count);
         }
     }
 

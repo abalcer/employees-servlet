@@ -58,7 +58,7 @@
             <select class="form-control" id="departmentId" name="departmentId">
                 <c:forEach var="department" items="${departments}">
                     <option value="${department.id}"
-                            ${department.id == employee.department.id ? "selected": ""}>
+                            ${((department.id == employee.department.id) || (department.id == departmentId)) ? "selected": ""}>
                     ${department.name}
                     </option>
                 </c:forEach>

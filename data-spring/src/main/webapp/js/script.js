@@ -8,6 +8,15 @@ $(document).ready(function(){
         });
     }
 
+    function objectifyForm(formArray) {//serialize data function
+
+      var returnArray = {};
+      for (var i = 0; i < formArray.length; i++){
+        returnArray[formArray[i]['name']] = formArray[i]['value'];
+      }
+      return returnArray;
+    }
+
     $(document).on('click', '.pager a', function(e){
         e.preventDefault();
         var url = $(this).attr("href");
@@ -55,13 +64,16 @@ $(document).ready(function(){
     $(document).on('click', '#employeeEditModal .btn-primary', function(e) {
         var form = $("form");
         var url = form.attr('action');
-        $.post(url, form.serialize(), function(data) {
-            if(data == "OK") {
-                $('#employeeEditModal').modal("hide");
-                loadEmployees(currentEmployeeUrl);
-            } else {
-                $('#employeeEditModal .modal-body').html(data);
-            }
+        var data = JSON.stringify(objectifyForm(form.serializeArray()));
+        $.ajax(url, {
+            data: data,
+            contentType : 'application/json',
+            type : 'POST'
+        }).done(function(data){
+            $('#employeeEditModal').modal("hide");
+            loadEmployees(currentEmployeeUrl);
+        }).fail(function(jqXHR, textStatus, errorThrown){
+            $('#employeeEditModal .modal-body').html(jqXHR.responseText);
         });
     });
 

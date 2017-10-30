@@ -11,12 +11,12 @@ dependencies {
     compile 'org.xerial:sqlite-jdbc:3.20.1'
     compile 'com.github.gwenn:sqlite-dialect:d285e22851'
 
-    compile "org.springframework:spring-jdbc:${springVersion}"
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+
+    //compile "org.springframework:spring-jdbc:${springVersion}"
     compile "org.springframework:spring-orm:${springVersion}"
     compile "org.springframework:spring-context:${springVersion}"
-    compile 'org.springframework.data:spring-data-commons-core:1.4.1.RELEASE'
-
-    compile("org.springframework.boot:spring-boot-autoconfigure:1.5.8.RELEASE")
+    compile "org.springframework.data:spring-data-commons:1.13.8.RELEASE"
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

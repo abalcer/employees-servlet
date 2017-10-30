@@ -9,9 +9,11 @@ sourceCompatibility = 1.8
 
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-devtools"
     compile "org.springframework:spring-webmvc"
-    compile group: 'org.springframework.data', name: 'spring-data-commons', version: '2.0.0.RELEASE'
 
+    compile "org.springframework:spring-aop"
+    //compile "org.springframework.data:spring-data-commons:1.13.8.RELEASE"
 
     compile 'javax.servlet:jstl:1.2'
     providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
