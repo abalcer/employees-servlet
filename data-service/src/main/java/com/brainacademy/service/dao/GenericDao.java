@@ -1,6 +1,7 @@
 package com.brainacademy.service.dao;
 
-import com.brainacademy.service.model.Employee;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface GenericDao<T> {
     List<T> getAll(int page);
 
     int count();
+
+    Page<T> getAll(Pageable pageable);
 }

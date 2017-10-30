@@ -1,43 +1,20 @@
 group 'com.brainacademy'
 version '1.0-SNAPSHOT'
 
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'org.akhikhl.gretty:gretty:+'
-    }
-}
-
-repositories {
-    jcenter()
-    mavenCentral()
-}
-
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'org.akhikhl.gretty'
 
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-    maven { url 'https://jitpack.io' }
-}
-
 dependencies {
     compile 'javax.servlet:servlet-api:2.5'
     compile 'javax.servlet:jstl:1.2'
 
-    compile group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '9.0.1'
-    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.7.v20170914'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
     compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.7.v20170914'
 
     compile project(':data-service')
+    compile "org.springframework.data:spring-data-commons:1.13.8.RELEASE"
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

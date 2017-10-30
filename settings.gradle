@@ -1,4 +1,5 @@
 rootProject.name = 'servlet-db'
 include 'data-service'
 include 'data-web'
+include 'data-spring'
 
