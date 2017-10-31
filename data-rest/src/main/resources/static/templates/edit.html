@@ -1,0 +1,48 @@
+<div id="formErrors"></div>
+<form class="form-horizontal" action="/employee" method="post">
+    <input type="hidden" name="id" value="{{employee.id}}">
+    <div class="form-group">
+        <label for="name" class="col-sm-3 control-label">Employee Name:</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control"
+                   id="name" name="name"
+                   placeholder="Employee Name" value="{{employee.name}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="gender" class="col-sm-3 control-label">Gender:</label>
+        <div class="col-sm-9">
+            <select class="form-control" id="gender" name="gender" placeholder="Employee Name">
+                <option value="M" {{if employee.gender=='M'}}selected{{fi}}>Male</option>
+                <option value="F" {{if employee.gender=='F'}}selected{{fi}}>Female</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="birthDate" class="col-sm-3 control-label">Birth Date:</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="birthDate" name="birthDate" placeholder="yyyy-mm-dd"
+                   value="{{employee.birthDate}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="hireDate" class="col-sm-3 control-label">Hire Date:</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="hireDate" name="hireDate" placeholder="yyyy-mm-dd"
+                   value="{{employee.hireDate}}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="departmentId" class="col-sm-3 control-label">Department:</label>
+        <div class="col-sm-9">
+            <select class="form-control" id="departmentId" name="departmentId">
+                {{foreach department in departments}}
+                <option value="{{department.id}}" {{if department.id == employee.department.id}}selected{{fi}}>
+                    {{department.name}}
+                </option>
+                {{end}}
+            </select>
+        </div>
+    </div>
+</form>
+
