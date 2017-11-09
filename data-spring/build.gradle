@@ -3,6 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 sourceCompatibility = 1.8
@@ -10,6 +11,7 @@ sourceCompatibility = 1.8
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
     compile "org.springframework.boot:spring-boot-devtools"
+    compile "org.springframework.boot:spring-boot-starter-security"
     compile "org.springframework:spring-webmvc"
 
     compile "org.springframework:spring-aop"
@@ -22,4 +24,11 @@ dependencies {
     compile project(':data-service')
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
 }

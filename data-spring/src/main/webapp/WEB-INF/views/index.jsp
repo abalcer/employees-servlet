@@ -19,6 +19,10 @@
     <div class="container">
         <h1 class="page-header">
             Employees
+            <span class="pull-right">
+                <span class="user">${user.principal.username}</span>
+                <a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
+            </span>
         </h1>
         <div class="container-fluid controls-bar">
             <div class="row">

@@ -24,7 +24,7 @@ public abstract class AbstractDao<T>
     public T create(T entity) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.save(entity);
+            session.saveOrUpdate(entity);
             transaction.commit();
             return entity;
         }

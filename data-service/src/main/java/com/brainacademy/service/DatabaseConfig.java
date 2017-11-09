@@ -2,6 +2,7 @@ package com.brainacademy.service;
 
 import com.brainacademy.service.model.Department;
 import com.brainacademy.service.model.Employee;
+import com.brainacademy.service.model.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,7 +48,7 @@ public class DatabaseConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setAnnotatedClasses(Employee.class, Department.class);
+        sessionFactory.setAnnotatedClasses(Employee.class, Department.class, User.class);
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
